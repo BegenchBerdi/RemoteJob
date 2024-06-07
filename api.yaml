@@ -1,0 +1,920 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Test API DOCUMENTATION
+  description: "Api documentation of job for working remotely! :)"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "berdiyev.begench03@gmail.com"
+
+paths:
+  # ----AUTH--------------------------------------
+  "/api/v1/auth/signup-email":
+    post:
+      tags:
+        - auth
+      x-swagger-router-controller: SampleController
+      summary: singup-email
+      description: ""
+      operationId: singup_email
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: singup-email
+          required: false
+          schema:
+            $ref: "#/definitions/SingUpEmail"
+      responses:
+        "200":
+          description: Success!
+        "500":
+          description: Error
+
+  "/api/v1/auth/confirm-email":
+    post:
+      tags:
+        - auth
+      x-swagger-router-controller: SampleController
+      summary: confirm-email
+      description: ""
+      operationId: confirm_email
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: confirm-email
+          required: false
+          schema:
+            $ref: "#/definitions/ConfirmEmail"
+      responses:
+        "200":
+          description: Success!
+        "500":
+          description: Error
+
+  "/api/v1/auth/signin-email":
+    post:
+      tags:
+        - auth
+      x-swagger-router-controller: SampleController
+      summary: signin-email
+      description: ""
+      operationId: signin_email
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: signin-email
+          required: false
+          schema:
+            $ref: "#/definitions/SingInEmail"
+      responses:
+        "200":
+          description: Success!
+        "429":
+          description: Too Many Requests
+        "500":
+          description: Error
+
+  "/api/v1/auth/forgot-password-email":
+    post:
+      tags:
+        - auth
+      x-swagger-router-controller: SampleController
+      summary: forgot-password-email
+      description: ""
+      operationId: forgot_password_email
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: forgot-password-email
+          required: false
+          schema:
+            $ref: "#/definitions/ForgotPasswordEmail"
+      responses:
+        "200":
+          description: Success!
+        "500":
+          description: Error
+
+  "/api/v1/auth/change-password-email":
+    post:
+      tags:
+        - auth
+      x-swagger-router-controller: SampleController
+      summary: change-password-email
+      description: ""
+      operationId: change_password_email
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: change-password-email
+          required: false
+          schema:
+            $ref: "#/definitions/ChangePasswordEmail"
+      responses:
+        "200":
+          description: Success!
+        "500":
+          description: Error
+
+  # ---------------Header-------------------------------------------------
+  "/api/v1/admin/header/header":
+    post:
+      tags:
+        - header
+      x-swagger-router-controller: SampleController
+      summary: add-header
+      description: ""
+      operationId: add_header
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/header/addHeader"
+      responses:
+        "200":
+          description: Success!
+        "500":
+          description: Error
+
+    delete:
+      tags:
+        - header
+      x-swagger-router-controller: SampleController
+      summary: delete-header
+      description: ""
+      operationId: delete_header
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/header/deleteHeader"
+      responses:
+        "200":
+          description: Success!
+        "500":
+          description: Error
+
+    put:
+      tags:
+        - header
+      x-swagger-router-controller: SampleController
+      summary: update-header
+      description: ""
+      operationId: update_header
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/header/updateHeader"
+      responses:
+        "200":
+          description: Success!
+        "500":
+          description: Error
+
+    get:
+      tags:
+        - header
+      x-swagger-router-controller: SampleController
+      summary: get-all-header
+      description: ""
+      operationId: get_all_header
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+      responses:
+        "200":
+          description: Success!
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        "500":
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  "/api/v1/admin/header/header/{id}":
+    get:
+      tags:
+        - header
+      x-swagger-router-controller: SampleController
+      summary: get-by-id-header
+      description: ""
+      operationId: get_by_id_header
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+        - in: path
+          name: id
+          description: "This was written in case it was needed! :)"
+          type: integer
+      responses:
+        "200":
+          description: Success!
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        "500":
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  #-------------------Category------------------------------------------------
+  "/api/v1/admin/category/category":
+    post:
+      tags:
+        - category
+      x-swagger-router-controller: SampleController
+      summary: add-category
+      description: ""
+      operationId: add_category
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/category/addCategory"
+      responses:
+        "200":
+          description: Success!
+        "500":
+          description: Error
+
+    delete:
+      tags:
+        - category
+      x-swagger-router-controller: SampleController
+      summary: delete-category
+      description: ""
+      operationId: delete_category
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/category/deleteCategory"
+      responses:
+        "200":
+          description: Success!
+        "500":
+          description: Error
+
+    put:
+      tags:
+        - category
+      x-swagger-router-controller: SampleController
+      summary: update-category
+      description: ""
+      operationId: update_category
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: category
+          name: authorization
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/category/updateCategory"
+      responses:
+        "200":
+          description: Success!
+        "500":
+          description: Error
+
+  "/api/v1/admin/category/categories":
+    get:
+      tags:
+        - category
+      x-swagger-router-controller: SampleController
+      summary: get-all-category
+      description: ""
+      operationId: get_all_category
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+      responses:
+        "200":
+          description: Success!
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        "500":
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  "/api/v1/admin/category/category/{id}":
+    get:
+      tags:
+        - category
+      x-swagger-router-controller: SampleController
+      summary: get-by-id-category
+      description: ""
+      operationId: get_by_id_category
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+        - in: path
+          name: id
+          description: "This was written in case it was needed! :)"
+          type: integer
+      responses:
+        "200":
+          description: Success!
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        "500":
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  #-----------------Product----------------------------------------------------
+  "/api/v1/admin/product/product":
+    post:
+      tags:
+        - Product
+      x-swagger-router-controller: SampleController
+      summary: add-product
+      description: ""
+      operationId: add_product
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/product/addProduct"
+      responses:
+        "200":
+          description: Success!
+        "500":
+          description: Error
+
+    delete:
+      tags:
+        - Product
+      x-swagger-router-controller: SampleController
+      summary: delete-product
+      description: ""
+      operationId: delete_product
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/product/deleteProduct"
+      responses:
+        "200":
+          description: Success!
+        "500":
+          description: Error
+
+    put:
+      tags:
+        - Product
+      x-swagger-router-controller: SampleController
+      summary: update-Product
+      description: ""
+      operationId: update_Product
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: "#/product/updateProduct"
+      responses:
+        "200":
+          description: Success!
+        "500":
+          description: Error
+
+    get:
+      tags:
+        - Product
+      x-swagger-router-controller: SampleController
+      summary: get-all-product
+      description: ""
+      operationId: get_all_product
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+        - in: query
+          name: limit
+          type: integer
+        - in: query
+          name: page
+          type: integer
+      responses:
+        "200":
+          description: Success!
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        "500":
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  "/api/v1/admin/product/product/{id}":
+    get:
+      tags:
+        - Product
+      x-swagger-router-controller: SampleController
+      summary: get-by-id-product
+      description: ""
+      operationId: get_by_id_product
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+        - in: path
+          name: id
+          description: "This was written in case it was needed! :)"
+          type: integer
+      responses:
+        "200":
+          description: Success!
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        "500":
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  # -----------FILE--------------------------------------
+  "/api/v1/file/image-upload":
+    post:
+      tags:
+        - files
+      x-swagger-router-controller: SampleController
+      summary: image-upload
+      description: ""
+      operationId: image_upload
+      consumes:
+        - multipart/form-data
+      parameters:
+        - in: header
+          name: authorization
+          description: SINGIN de alan tokenini su yere goyup bilersin
+          type: string
+        - in: formData
+          name: image
+          type: file
+          description: image-upload
+      responses:
+        "200":
+          description: Success!
+          schema:
+            $ref: "#/files/ResImageUpload"
+        "500":
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  "/api/v1/file/file-upload":
+    post:
+      tags:
+        - files
+      x-swagger-router-controller: SampleController
+      summary: file-upload
+      description: ""
+      operationId: file_upload
+      consumes:
+        - multipart/form-data
+      parameters:
+        - in: header
+          name: authorization
+          description: SINGIN de alan tokenini su yere goyup bilersin
+          type: string
+        - in: formData
+          name: file
+          type: file
+          description: file-upload
+      responses:
+        "200":
+          description: Success!
+          schema:
+            $ref: "#/files/ResFileUpload"
+        "500":
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  # ----API---------------------------------------
+  "/api/v1/product":
+    get:
+      tags:
+        - Client
+      x-swagger-router-controller: SampleController
+      summary: get-all-product
+      description: ""
+      operationId: get_product_list
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: search
+          type: string
+        - in: query
+          name: category_id
+          type: integer
+        - in: query
+          name: limit
+          type: integer
+        - in: query
+          name: page
+          type: integer
+      responses:
+        "200":
+          description: Success!
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        "500":
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  "/api/v1/product/{id}":
+    get:
+      tags:
+        - Client
+      x-swagger-router-controller: SampleController
+      summary: get-by-id-product-for-client
+      description: ""
+      operationId: get_by_id_clientproduct
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          name: authorization
+          type: string
+        - in: path
+          name: id
+          description: "This was written in case it was needed! :)"
+          type: integer
+      responses:
+        "200":
+          description: Success!
+          schema:
+            $ref: "#/definitions/SuccessResponse"
+        "500":
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+securityDefinitions:
+  petstore_auth:
+    type: oauth2
+    authorizationUrl: "http://petstore.swagger.io/api/oauth/dialog"
+    flow: implicit
+    scopes:
+      "write:pets": modify pets in your account
+      "read:pets": read your pets
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+
+definitions:
+  SingUpEmail:
+    required:
+      - email
+      - password
+      - name
+    properties:
+      email:
+        type: string
+        example: amanyaz@gmail.com
+      name:
+        type: string
+        example: Test
+      surname:
+        type: string
+        example: Testov
+      password:
+        type: string
+        example: xyz
+      verifiedPassword:
+        type: string
+        example: xyz
+
+  ConfirmEmail:
+    required:
+      - confirmToken
+    properties:
+      confirmToken:
+        type: string
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhZGFtZ3VyYmFuYWdhQGdtYWlsLmNvbSIsIm5hbWUiOiJHYWRhbSIsInN1cm5hbWUiOiJHdXJiYW4iLCJwYXNzd29yZCI6Inh5eiIsInR5cGUiOjAsImVjb21CdXNNb2RlbHMiOiJ7MSwgMiwgM30iLCJpYXQiOjE3MDA0MTc1MDh9.oS8Reu_1wvg8hcZlBAIFlPR05NeIdRyMHLV7D5S60g4
+
+  SingInEmail:
+    required:
+      - email
+      - password
+    properties:
+      email:
+        type: string
+        example: amanyaz@gmail.com
+      password:
+        type: string
+        example: xyz
+
+  ForgotPasswordEmail:
+    required:
+      - email
+    properties:
+      email:
+        type: string
+        example: amanyaz@gmail.com
+
+  ChangePasswordEmail:
+    required:
+      - password
+      - passwordResetToken
+    properties:
+      password:
+        type: string
+        example: "1234"
+      passwordResetToken:
+        type: string
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdhZGFtZ3VyYmFuYWdhQGdtYWlsLmNvbSIsImlhdCI6MTcwMDQyNjU4MywiZXhwIjoxNzAwNDI3MTgzfQ.twEqQemxfoU1-zI3KyU5mcTPTRmIRRL1EK310vfdz9w
+
+  SuccessResponse:
+    properties:
+      code:
+        type: string
+        example: "001"
+      msg:
+        type: string
+        example: "Success"
+
+  ErrorResponse:
+    properties:
+      code:
+        type: string
+        example: "034"
+      msg:
+        type: string
+        example: "Interval server error!"
+
+response:
+  SuccessResponse:
+    properties:
+      code:
+        type: string
+        example: "001"
+      msg:
+        type: string
+        example: "Success"
+
+  ErrorResponse:
+    properties:
+      code:
+        type: string
+        example: "034"
+      msg:
+        type: string
+        example: "Interval server error!"
+
+header:
+  addHeader:
+    properties:
+      title:
+        type: string
+      logo:
+        type: string
+
+  updateHeader:
+    properties:
+      id:
+        type: integer
+        required: true
+      title:
+        type: string
+      logo:
+        type: string
+
+  deleteHeader:
+    properties:
+      id:
+        type: integer
+        required: true
+
+category:
+  addCategory:
+    properties:
+      title:
+        type: string
+      langId:
+        type: integer
+      isPublished:
+        type: bool
+        default: false
+
+  updateCategory:
+    properties:
+      id:
+        type: integer
+        required: true
+      title:
+        type: string
+      langId:
+        type: integer
+      isPublished:
+        type: bool
+        default: false
+
+  deleteCategory:
+    properties:
+      id:
+        type: integer
+        required: true
+
+product:
+  addProduct:
+    properties:
+      title:
+        type: string
+      langId:
+        type: integer
+      about:
+        type: string
+      price:
+        example: 30.1
+      phone:
+        type: string
+      categoryId:
+        type: integer
+      imagePath:
+        type: string
+        example: "uploads/files/1/18295071-cf24-4f86-ac07-72c98a34aa4a/18295071-cf24-4f86-ac07-72c98a34aa4a"
+        description: "This is the image path"
+
+  updateProduct:
+    properties:
+      id:
+        type: integer
+        required: true
+      title:
+        type: string
+      langId:
+        type: integer
+      about:
+        type: string
+      price:
+        type: float
+      phone:
+        type: string
+      categoryId:
+        type: integer
+      imagePath:
+        type: string
+        example: "uploads/files/1/18295071-cf24-4f86-ac07-72c98a34aa4a/18295071-cf24-4f86-ac07-72c98a34aa4a"
+        description: "This is updated image path"
+
+  deleteProduct:
+    properties:
+      id:
+        type: integer
+        required: true
+
+files:
+  ResImageUpload:
+    properties:
+      code:
+        type: string
+        example: "001"
+      msg:
+        type: string
+        example: "Success"
+      filePath:
+        type: string
+        example: "uploads/images/1/18295071-cf24-4f86-ac07-72c98a34aa4a/18295071-cf24-4f86-ac07-72c98a34aa4a"
+      fileId:
+        type: string
+        example: "18295071-cf24-4f86-ac07-72c98a34aa4a"
+
+  ResFileUpload:
+    properties:
+      code:
+        type: string
+        example: "001"
+      msg:
+        type: string
+        example: "Success"
+      filePath:
+        type: string
+        example: "uploads/files/1/18295071-cf24-4f86-ac07-72c98a34aa4a/18295071-cf24-4f86-ac07-72c98a34aa4a"
+      fileId:
+        type: string
+        example: "18295071-cf24-4f86-ac07-72c98a34aa4a"
